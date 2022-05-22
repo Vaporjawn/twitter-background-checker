@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import TwitterAPI from '../../Backend/twitterAPI';
 import './userInput.css';
 
 const UserInput = () => {
@@ -6,7 +7,8 @@ const UserInput = () => {
   const [userName, setUserName]: [string, Dispatch<SetStateAction<string>>] = useState('');
 
   const check = (name: string) => {
-    console.log(name);
+    TwitterAPI(name);
+    // console.log(name);
   }
 
   const handleKeyDown = (event: any) => {
