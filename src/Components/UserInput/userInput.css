@@ -1,0 +1,10 @@
+.UserInput{
+    text-align: center;
+    box-sizing: border-box;
+    padding: 50px;
+}
+input{
+    width: 12%;
+    padding: 15px;
+    font-size: 30px;
+}
