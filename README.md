@@ -23,3 +23,17 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+
+notes: 
+
+On install, need to add `    
+    resolve: {
+      fallback:{
+        'crypto': require.resolve("crypto-browserify"),
+        "buffer": require.resolve("buffer/"),
+        "stream": require.resolve("stream-browserify"),
+        
+      },`
+
+      to `node_modules\react-scripts\config\webpack.config.js`
