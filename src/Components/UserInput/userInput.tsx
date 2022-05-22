@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import './userInput.css';
 
 const UserInput = () => {
@@ -18,8 +18,8 @@ const UserInput = () => {
   return (
     <div className="UserInput">
        {/* @ts-ignore */}
-      <input value={userName} onInput={e => setUserName(e.target.value)} onKeyDown={handleKeyDown}/>
-      <button onClick={() => check(userName)} className='SearchButton'>Search</button>
+      <input placeholder='Enter Username' value={userName} onInput={e => setUserName(e.target.value)} onKeyDown={handleKeyDown}/>
+      <button onClick={() => check(userName)}>Search</button>
     </div>
   );
 }
