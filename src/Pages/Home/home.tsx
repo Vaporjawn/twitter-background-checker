@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Components/Footer/footer';
 import UserInput from '../../Components/UserInput/userInput';
 import './home.css';
 
@@ -9,8 +10,9 @@ const Home = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        </header>
         <UserInput/>
-      </header>
+        <Footer/>
     </div>
   );
 }
