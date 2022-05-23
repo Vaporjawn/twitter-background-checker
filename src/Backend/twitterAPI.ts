@@ -1,4 +1,5 @@
 import { Client } from "twitter-api-sdk";
+import { request } from "twitter-api-sdk/dist/request";
 
 
 const TwitterAPI = async (userName: string) => {
