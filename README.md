@@ -33,7 +33,8 @@ On install, need to add `
         'crypto': require.resolve("crypto-browserify"),
         "buffer": require.resolve("buffer/"),
         "stream": require.resolve("stream-browserify"),
-        
+        "http": require.resolve("stream-http"),
+        "url": require.resolve("url/")
       },`
 
       to `node_modules\react-scripts\config\webpack.config.js`
