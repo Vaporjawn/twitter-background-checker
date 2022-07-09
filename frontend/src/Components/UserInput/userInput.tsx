@@ -1,14 +1,23 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import TwitterAPI from '../../Backend/twitterAPI';
 import './userInput.css';
 
+// const check = async() => await fetch('/hello').then(res => res.json())
+// .then(res => console.log(res));
+// check();
+
 const UserInput = () => {
-
   const [userName, setUserName]: [string, Dispatch<SetStateAction<string>>] = useState('');
-
-  const check = (name: string) => {
-    TwitterAPI(name);
-    // console.log(name);
+  const check = async(name: string) => {
+    console.log(name);
+    await fetch('/userNameTest', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({name: name}),
+    
+  }).then(res => res.json())
+    .then(res => console.log(res));
   }
 
   const handleKeyDown = (event: any) => {
