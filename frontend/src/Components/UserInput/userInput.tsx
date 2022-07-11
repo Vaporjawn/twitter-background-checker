@@ -9,12 +9,12 @@ const UserInput = () => {
   const [userName, setUserName]: [string, Dispatch<SetStateAction<string>>] = useState('');
   const check = async(name: string) => {
     console.log(name);
-    await fetch('/userNameTest', {
+    await fetch('/twitterV2', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({name: name}),
+    body: JSON.stringify({userName: name}),
     
   }).then(res => res.json())
     .then(res => console.log(res));

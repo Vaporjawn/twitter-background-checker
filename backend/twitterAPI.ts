@@ -1,6 +1,5 @@
 import { Client } from "twitter-api-sdk";
 import { request } from "twitter-api-sdk/dist/request";
-import fetch from 'node-fetch';
 
 
 
