@@ -8,7 +8,7 @@ const app: Express = express();
 const port = process.env.PORT;
 const twitterClient = new TwitterApi(process.env.TWITTER_API_KEY!);
 const twitterAPI = twitterClient.readOnly;
-
+const twitterAPIAuth = new TwitterApi({ appKey: process.env.TWITTER_API_KEY!, appSecret: process.env.TWITTER_API_SECRET! });
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }));
 
 app.get('/', (_req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
+  res.send('Express + TypeScript Server is up an running');
 });
 
 app.get('/hello', (_req: Request, res: Response) => {
@@ -25,7 +25,7 @@ app.get('/hello', (_req: Request, res: Response) => {
     });
 });
 
-app.post('/twitterV2', async (req: Request, res: Response) => {
+app.post('/userName', async (req: Request, res: Response) => {
   await twitterAPI.v2.userByUsername(req.body.userName)
   .then(user => {
     res.json(user.data);
@@ -37,16 +37,15 @@ app.post('/twitterV2', async (req: Request, res: Response) => {
   });
 });
 
-app.post('/twitter', async (req: Request, res: Response) => {
-  await fetch('https://api.github.com/users/'+ req.body.userName)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    res.json(data);
-  }, err => {
-    console.log(err);
+app.post('/tweetCount', async (req: Request, res: Response) => {
+  await twitterAPIAuth.v2.tweetCountAll(req.body.userName)
+  .then(tweetCount => {
+    res.json(tweetCount.data);
+    console.log(tweetCount.data);
+  }).catch(err => {
     res.json(err);
-  })
+    console.log(err);
+  });
 });
 
 app.post('/userNameTest', (req: Request, res: Response) => {

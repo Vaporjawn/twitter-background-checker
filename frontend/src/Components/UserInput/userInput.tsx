@@ -7,22 +7,34 @@ import './userInput.css';
 
 const UserInput = () => {
   const [userName, setUserName]: [string, Dispatch<SetStateAction<string>>] = useState('');
-  const check = async(name: string) => {
-    console.log(name);
-    await fetch('/twitterV2', {
+
+  const getUserName = async(userName: string) => {
+    console.log(userName);
+    await fetch('/userName', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({userName: name}),
+    body: JSON.stringify({userName: userName}),
     
   }).then(res => res.json())
     .then(res => console.log(res));
   }
 
+  const getTweetCount = async(input: string) => {
+    await fetch('/tweetCount',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({userName: input})
+  }).then(res => res.json())
+    .then(res => console.log(res));
+  }
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      check(userName);
+      getTweetCount(userName);
     }
   }
 
@@ -30,7 +42,7 @@ const UserInput = () => {
     <div className="UserInput">
        {/* @ts-ignore */}
       <input placeholder='Enter Username' value={userName} onInput={e => setUserName(e.target.value)} onKeyDown={handleKeyDown}/>
-      <button onClick={() => check(userName)}>Search</button>
+      <button onClick={() => getTweetCount(userName)}>Search</button>
     </div>
   );
 }
